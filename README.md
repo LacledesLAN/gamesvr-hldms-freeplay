@@ -1,10 +1,12 @@
+# Laclede's LAN Half-Life Deathmatch Source Dedicated Freeplay Server in Docker
+
 ![Laclede's LAN Half-Life Deathmatch Source Dedicated Freeplay Server](https://raw.githubusercontent.com/LacledesLAN/gamesvr-hldms-freeplay/master/.misc/banner-hldms-freeplay.png "Laclede's LAN Half-Life Deathmatch Source Dedicated Freeplay Server")
 
 This repository is maintained by [Laclede's LAN](https://lacledeslan.com). Its contents are heavily tailored and tweaked for use at our charity LAN-Parties. For third-parties we recommend using this repo only as a reference example and then building your own using [gamesvr-hldms](https://github.com/LacledesLAN/gamesvr-hldms) as the base image for your customized server.
 
 ## Linux
-[![](https://images.microbadger.com/badges/version/lacledeslan/gamesvr-hldms-freeplay.svg)](https://microbadger.com/images/lacledeslan/gamesvr-hldms-freeplay "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/lacledeslan/gamesvr-hldms-freeplay.svg)](https://microbadger.com/images/lacledeslan/gamesvr-hldms-freeplay "Get your own image badge on microbadger.com")
+
+[![linux/amd64](https://github.com/LacledesLAN/gamesvr-hldms-freeplay/actions/workflows/build-linux-image.yml/badge.svg)](https://github.com/LacledesLAN/gamesvr-hldms-freeplay/actions/workflows/build-linux-image.yml)
 
 ### Download
 
@@ -23,7 +25,7 @@ docker run -it --rm lacledeslan/gamesvr-hldms-freeplay ./ll-tests/gamesvr-hldms-
 ### Run Interactive Server
 
 ```shell
-docker pull lacledeslan/gamesvr-cssource-freeplay ./srcds_run -game hl1mp +map crossfire -maxplayers 8 +sv_lan 1;
+docker run -it --net=host lacledeslan/gamesvr-hldms-freeplay ./srcds_run -game hl1mp +map crossfire -maxplayers 8 +sv_lan 1;
 ```
 
 ## Getting Started with Game Servers in Docker

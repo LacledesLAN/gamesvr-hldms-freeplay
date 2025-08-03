@@ -1,4 +1,13 @@
 # escape=`
+
+FROM scratch AS BUILDER
+
+COPY ./sourcemod.linux /output/hl1mp/
+
+COPY ./sourcemod-configs /output/hl1mp/
+
+COPY --chown=HLDMS:root ./dist /output/
+
 FROM lacledeslan/gamesvr-hldms
 
 HEALTHCHECK NONE
@@ -14,13 +23,7 @@ LABEL com.lacledeslan.build-node=$BUILDNODE `
       org.label-schema.description="LL Half-Life Deathmatch Source Dedicated Freeplay Server" `
       org.label-schema.vcs-url="https://github.com/LacledesLAN/gamesvr-hldms-freeplay"
 
-COPY --chown=HLDMS:root ./sourcemod.linux /app/hl1mp/
-
-COPY --chown=HLDMS:root ./sourcemod-configs /app/hl1mp/
-
-COPY --chown=HLDMS:root ./dist /app/
-
-COPY --chown=HLDMS:root ./ll-tests/*.sh /app/ll-tests
+COPY --chown=HLDMS:root ./output /app/ FROM BUILDER
 
 # UPDATE USERNAME & ensure permissions
 RUN usermod -l HLDMSFreeplay HLDMS &&`

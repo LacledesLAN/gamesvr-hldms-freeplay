@@ -23,7 +23,7 @@ LABEL com.lacledeslan.build-node=$BUILDNODE `
       org.label-schema.description="LL Half-Life Deathmatch Source Dedicated Freeplay Server" `
       org.label-schema.vcs-url="https://github.com/LacledesLAN/gamesvr-hldms-freeplay"
 
-COPY --chown=HLDMS:root ./output /app/ FROM BUILDER
+COPY --chown=HLDMS:root --from=BUILDER ./output /app/
 
 # UPDATE USERNAME & ensure permissions
 RUN usermod -l HLDMSFreeplay HLDMS &&`

@@ -1,5 +1,4 @@
 # escape=`
-
 FROM scratch AS BUILDER
 
 COPY ./sourcemod.linux /output/hl1mp/
@@ -27,8 +26,7 @@ COPY --chown=HLDMS:root --from=BUILDER ./output /app/
 
 # UPDATE USERNAME & ensure permissions
 RUN usermod -l HLDMSFreeplay HLDMS &&`
-    chmod +x /app/ll-tests/*.sh &&`
-    mkdir -p /app/hl1mp/logs;
+    chmod +x /app/ll-tests/*.sh;
 
 USER HLDMSFreeplay
 
